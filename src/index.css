@@ -1,0 +1,323 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* Google Fonts - Organic Modernism Typography */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;500;700&display=swap');
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  /* Organic Modernism Color Palette */
+  --primary: #8b9d83; /* Soft sage green */
+  --primary-foreground: #faf8f3; /* Cream */
+  --sidebar-primary: #8b9d83;
+  --sidebar-primary-foreground: #faf8f3;
+  --chart-1: #d4a574; /* Warm sand */
+  --chart-2: #c9a88a; /* Soft clay */
+  --chart-3: #8b9d83;
+  --chart-4: #7a8a99; /* Muted blue-gray */
+  --chart-5: #6b7280;
+  --radius: 0.75rem;
+  --background: #faf8f3; /* Cream background */
+  --foreground: #2c3e50; /* Deep charcoal text */
+  --card: #ffffff;
+  --card-foreground: #2c3e50;
+  --popover: #ffffff;
+  --popover-foreground: #2c3e50;
+  --secondary: #f5f3f0; /* Very light gray */
+  --secondary-foreground: #5a6b7a;
+  --muted: #e8e6e1; /* Light gray */
+  --muted-foreground: #7a8a99;
+  --accent: #d4a574; /* Warm sand accent */
+  --accent-foreground: #ffffff;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --border: #e8e6e1;
+  --input: #f5f3f0;
+  --ring: #8b9d83;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #2c3e50;
+  --sidebar-accent: #d4a574;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #e8e6e1;
+  --sidebar-ring: #8b9d83;
+}
+
+.dark {
+  /* Dark mode not used for this light, welcoming design */
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold;
+    font-family: 'Playfair Display', serif;
+  }
+  h1 {
+    @apply text-5xl tracking-tight;
+  }
+  h2 {
+    @apply text-4xl tracking-tight;
+  }
+  h3 {
+    @apply text-2xl tracking-tight;
+  }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [type="button"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  [type="reset"]:not(:disabled),
+  a[href],
+  select:not(:disabled),
+  input[type="checkbox"]:not(:disabled),
+  input[type="radio"]:not(:disabled) {
+    @apply cursor-pointer;
+  }
+}
+
+@layer components {
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes dropInFade {
+    from {
+      opacity: 0;
+      transform: translateY(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  body {
+    animation: fadeIn 0.8s ease-in-out;
+  }
+
+  .animate-drop-in {
+    animation: dropInFade 0.6s ease-out forwards;
+    opacity: 0;
+  }
+
+  .animate-drop-in:nth-child(1) { animation-delay: 0.1s; }
+  .animate-drop-in:nth-child(2) { animation-delay: 0.2s; }
+  .animate-drop-in:nth-child(3) { animation-delay: 0.3s; }
+  .animate-drop-in:nth-child(4) { animation-delay: 0.4s; }
+  .animate-drop-in:nth-child(5) { animation-delay: 0.5s; }
+  .animate-drop-in:nth-child(6) { animation-delay: 0.6s; }
+
+  /* Animated underline effect */
+  @keyframes slideUnderline {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+
+  .animate-underline {
+    position: relative;
+    display: inline-block;
+  }
+
+  .animate-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    height: 3px;
+    background-color: currentColor;
+    animation: slideUnderline 0.6s ease-out forwards;
+    opacity: 0.6;
+  }
+
+  /* Icon pulse effect */
+  @keyframes iconPulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  .animate-icon-pulse {
+    animation: iconPulse 2s ease-in-out infinite;
+  }
+
+  /* Text highlight effect */
+  @keyframes highlightSlide {
+    from {
+      background-position: -200% 0;
+    }
+    to {
+      background-position: 200% 0;
+    }
+  }
+
+  .animate-highlight {
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(195, 162, 127, 0.3) 50%,
+      transparent 100%
+    );
+    background-size: 200% 100%;
+    animation: highlightSlide 2s ease-in-out infinite;
+  }
+
+  /* Smooth scale on hover */
+  .hover-scale {
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+  }
+
+  .hover-scale:hover {
+    transform: scale(1.05);
+  }
+
+  /* Scroll-triggered animations */
+  @keyframes scrollFadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .scroll-animate {
+    opacity: 0;
+    animation: scrollFadeInUp 0.8s ease-out forwards;
+  }
+
+  /* Stagger delays for multiple elements */
+  .scroll-animate:nth-child(1) { animation-delay: 0s; }
+  .scroll-animate:nth-child(2) { animation-delay: 0.15s; }
+  .scroll-animate:nth-child(3) { animation-delay: 0.3s; }
+  .scroll-animate:nth-child(4) { animation-delay: 0.45s; }
+  .scroll-animate:nth-child(5) { animation-delay: 0.6s; }
+  .scroll-animate:nth-child(6) { animation-delay: 0.75s; }
+
+  /**
+   * Custom container utility that centers content and adds responsive padding.
+   *
+   * This overrides Tailwind's default container behavior to:
+   * - Auto-center content (mx-auto)
+   * - Add responsive horizontal padding
+   * - Set max-width for large screens
+   *
+   * Usage: <div className="container">...</div>
+   *
+   * For custom widths, use max-w-* utilities directly:
+   * <div className="max-w-6xl mx-auto px-4">...</div>
+   */
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem; /* 16px - mobile padding */
+    padding-right: 1rem;
+  }
+
+  .flex {
+    min-height: 0;
+    min-width: 0;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem; /* 24px - tablet padding */
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2rem; /* 32px - desktop padding */
+      padding-right: 2rem;
+      max-width: 1280px; /* Standard content width */
+    }
+  }
+
+  /* Organic Modernism: Typography System */
+  .font-sans {
+    font-family: 'Lato', sans-serif;
+  }
+
+  /* Utility class for display font */
+  .font-display {
+    font-family: 'Playfair Display', serif !important;
+  }
+
+  /* Organic Modernism: Smooth transitions */
+  * {
+    transition-property: color, background-color, border-color, box-shadow;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+  }
+
+  /* Organic Modernism: Soft shadows */
+  .shadow-soft {
+    box-shadow: 0 4px 12px rgba(44, 62, 80, 0.08);
+  }
+
+  .shadow-soft-lg {
+    box-shadow: 0 8px 24px rgba(44, 62, 80, 0.12);
+  }
+}
